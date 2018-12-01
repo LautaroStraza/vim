@@ -23,8 +23,15 @@ chmod +x remap.sh
 ./remap.sh
 
 #Configurar vim plugins
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim +PluginInstall +qall
+if [ -e ~/.vim/bundle/Vundle.vim ]; then
+	echo "VundleVim ya instalado, instalando plugins..."
+	vim +PluginInstall +qall
+else
+	echo "Instalando VundleVim..."
+	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	echo "Instalando plugins..."
+	vim +PluginInstall +qall
+fi
 
 #Salir
 exit
