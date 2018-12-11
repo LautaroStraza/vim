@@ -43,9 +43,9 @@ set wildmode=longest,list,full "Habilita el autocompletado de archivos.
 let mapleader =" "
 
 " Copiar y pegar a xclipboard
-vnoremap <C-c> "*y :let @+=@*<CR>
+vnoremap <C-y> "*y :let @+=@*<CR>
 vnoremap <C-x> "*d :let @+=@*<CR>
-map <C-v> "+P
+map <C-p> "+P
 
 " Selección visual dentro de parentesis o corchetes.
 noremap % v%
