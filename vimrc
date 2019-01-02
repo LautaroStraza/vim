@@ -67,6 +67,7 @@ map <leader>q :q<CR>
 map <leader>t :NERDTreeToggle<CR>
 map <leader>g :Goyo<CR>
 map <leader>h <Esc>:call ToggleHardMode()<CR>
+map <leader>c <Esc>:LLPStartPreview<CR>
 
 " Remueve espacios en blanco extras
 " al final de cada linea al guardar
@@ -92,6 +93,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'vimwiki/vimwiki'
 Plugin 'agude/vim-eldar'
+Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'wikitopian/hardmode'
