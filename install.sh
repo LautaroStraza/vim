@@ -21,22 +21,28 @@ if [ $VIM ] && [ $GIT ] ; then
     #Backup de la configuración vieja
     if [ -e /home/$USUARIO/.vimrc ]
     then
-        echo "Creando copia de seguridad."
-        cp /home/$USUARIO/.vimrc /home/$USUARIO/.vimrc.backup
+       dialog --backtitle "Instalación vimrc de Straza" --title "Copia de seguridad" --yesno "El archivo .vimrc ya existe, ¿Desea hacer una copia de seguridad?" 7 70
+       RESPUESTA=$?
+
+       if [ $RESPUESTA = 0 ]
+       then
+            echo "Creando copia de seguridad."
+            cp /home/$USUARIO/.vimrc /home/$USUARIO/.vimrc.backup
+        fi
     else
         echo "No es necesario hacer copia de seguridad."
     fi
 
     #Guardo dotfiles
-    cp vimrc /home/$USUARIO/.vimrc
-    #Cambio propiedades
-    chmod 666 /home/$USUARIO/.vimrc
+    cp /home/$USUARIO/vimrc/vimrc /home/$USUARIO/.vimrc
     #Cambio propietario
     chown $USUARIO:$USUARIO /home/$USUARIO/.vimrc
+    #Cambio propiedades
+    chmod 666 /home/$USUARIO/.vimrc
 
     #Script remap
-    chmod +x remap.sh
-    ./remap.sh
+    chmod +x /home/$USUARIO/vimrc/remap.sh
+    /home/$USUARIO/vimrc/remap.sh
 
     #Configurar vim plugins
     if [ -e ~/.vim/bundle/Vundle.vim ]; then
@@ -48,11 +54,18 @@ if [ $VIM ] && [ $GIT ] ; then
         echo "Instalando plugins..."
         vim +PluginInstall +qall
     fi
+
+    #Saludos
+    dialog --backtitle "Instalación vimrc de Straza" --ok-label "Salir" --title "Saludos" --msgbox "La instalación finalizó corectamente, Dews!" 7 47
+    clear
+
 else
     if [ ! $VIM ];then
+        echo "Dependencias Incorrectas."
         echo "Falta instalar Vim."
     fi
     if [ ! $GIT ];then
+        echo "Dependencias Incorrectas."
         echo "Falta instalar Git."
     fi
 fi
