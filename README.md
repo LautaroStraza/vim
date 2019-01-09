@@ -7,6 +7,14 @@ Vimrc configuraciones para vim.
     Dialog
     Vim (Gvim o algún vim gráfico para poder usar el buffer +)
 ```
+
+### Instalación
+```
+    git clone https://github.com/lautarostraza/vimrc ~/vimrc
+    cd ~/vimrc
+    ./install.sh
+```
+
 ### Usa los siguientes plugins:
 ```
     Plugin 'PotatoesMaster/i3-vim-syntax'
