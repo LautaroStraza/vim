@@ -1,12 +1,25 @@
 # vimrc
 Vimrc configuraciones para vim.
 
-Usa los siguientes plugins:
+### Dependencias
 ```
-  Plugin 'ervandew/supertab'
-  Plugin 'scrooloose/nerdtree'
-  Plugin 'ap/vim-buftabline'
-  Plugin 'vim-syntastic/syntastic'
+    Git
+    Dialog
+    Vim (Gvim o algún vim gráfico para poder usar el buffer +)
+```
+### Usa los siguientes plugins:
+```
+    Plugin 'PotatoesMaster/i3-vim-syntax'
+    Plugin 'ervandew/supertab'
+    Plugin 'junegunn/goyo.vim'
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'vim-syntastic/syntastic'
+    Plugin 'vimwiki/vimwiki'
+    Plugin 'agude/vim-eldar'
+    Plugin 'xuhdev/vim-latex-live-preview'
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
+    Plugin 'wikitopian/hardmode'
 ```
 
 ### Screenshoots (el color depende de la terminal):
