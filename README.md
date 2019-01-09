@@ -9,10 +9,11 @@ Vimrc configuraciones para vim.
 ```
 
 ### Instalación
+Asegurarse de tener las depencencias instaladas, y desde la terminal:
 ```
-    git clone https://github.com/lautarostraza/vimrc ~/vimrc
-    cd ~/vimrc
-    ./install.sh
+    $ git clone https://github.com/lautarostraza/vimrc ~/vimrc
+    $ cd ~/vimrc
+    $ ./install.sh
 ```
 
 ### Usa los siguientes plugins:
