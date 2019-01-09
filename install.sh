@@ -10,8 +10,9 @@
 #Controlo dependencias
 VIM=$(which vim)
 GIT=$(which git)
+DIALOG=$(which dialog)
 
-if [ $VIM ] && [ $GIT ] ; then
+if [ $VIM ] && [ $GIT ] && [ $DIALOG ]; then
     echo "Dependencias correctas."
 
     #Variables
@@ -67,6 +68,10 @@ else
     if [ ! $GIT ];then
         echo "Dependencias Incorrectas."
         echo "Falta instalar Git."
+    fi
+    if [ ! $DIALOG ];then
+        echo "Dependencias Incorrectas."
+        echo "Falta instalar Dialog."
     fi
 fi
 
