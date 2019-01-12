@@ -16,6 +16,17 @@ Asegurarse de tener las depencencias instaladas, y desde la terminal:
     $ ./install.sh
 ```
 
+### Instalación remap
+El script remap (cambia capsLock : escape) se ejecuta una vez al instalar vimrc.
+Para instalar ejecutar:
+```
+    $ cd ~/vimrc
+    $ ./remap-install.sh
+```
+Cada vez que reinicia la máquina virtual se pierte el remapeo de teclas,
+    pero solo basta con llamarlo una vez: $ remap
+
+
 ### Usa los siguientes plugins:
 ```
     Plugin 'PotatoesMaster/i3-vim-syntax'
