@@ -117,5 +117,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='dark_minimal'
 "Vimwiki
 filetype plugin on
+"Latex-live-preview
+let g:livepreview_previewer = 'evince'
+let g:livepreview_engine = 'pdflatex'
 
 " Dews!
