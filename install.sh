@@ -12,10 +12,14 @@ VIM=$(which vim)
 GIT=$(which git)
 DIALOG=$(which dialog)
 
-if [ $VIM ] && [ $GIT ] && [ $DIALOG ]; then
+#Directorio donde se clono el repositorio
+DIRECTORIO=$(pwd)
+
+if [ $VIM ] && [ $GIT ] && [ $DIALOG ]
+    then
     echo "Dependencias correctas."
 
-    #Variables
+    #Nombre de usuario
     USUARIO=$(whoami)
     echo "Nombre de usuario: $USUARIO."
 
@@ -29,21 +33,37 @@ if [ $VIM ] && [ $GIT ] && [ $DIALOG ]; then
        then
             echo "Creando copia de seguridad."
             cp /home/$USUARIO/.vimrc /home/$USUARIO/.vimrc.backup
-        fi
-    else
-        echo "No es necesario hacer copia de seguridad."
+       fi
     fi
 
     #Guardo dotfiles
-    cp /home/$USUARIO/vimrc/vimrc /home/$USUARIO/.vimrc
+    cp ${DIRECTORIO}/vimrc /home/$USUARIO/.vimrc
     #Cambio propietario
     chown $USUARIO:$USUARIO /home/$USUARIO/.vimrc
     #Cambio propiedades
-    chmod 666 /home/$USUARIO/.vimrc
+    chmod 644 /home/$USUARIO/.vimrc
 
-    #Script remap
-    chmod +x /home/$USUARIO/vimrc/remap.sh
-    /home/$USUARIO/vimrc/remap.sh
+    #Ejecutar scritp remap
+    chmod +x ${DIRECTORIO}/remap.sh
+    ${DIRECTORIO}/remap.sh
+
+    #Instalar scritp remap
+    dialog --backtitle "Instalación remap de Straza" --title "Instalar remap" --yesno "¿Desea instalar remap?" 7 70
+    RESPUESTA=$?
+    if [ $RESPUESTA = 0 ]
+    then
+        if [ ! -e /usr/local/bin/remap ]
+        then
+            sudo cp ${DIRECTORIO}/remap.sh /usr/local/bin/remap
+            echo "Remap instalado en /usr/local/bin/remap."
+            echo "Para ejecutar:"
+            echo "              $ remap"
+        else
+            echo "Remap ya se encuentra instalado en /usr/local/bin/remap."
+            echo "Para ejecutar:"
+            echo "              $ remap"
+        fi
+    fi
 
     #Configurar vim plugins
     if [ -e ~/.vim/bundle/Vundle.vim ]; then
