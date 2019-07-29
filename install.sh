@@ -19,12 +19,8 @@ if [ $VIM ] && [ $GIT ] && [ $DIALOG ]
     then
     echo "Dependencias correctas."
 
-    #Nombre de usuario
-    USUARIO=$(whoami)
-    echo "Nombre de usuario: $USUARIO."
-
     #Backup de la configuración vieja
-    if [ -e /home/$USUARIO/.vimrc ]
+    if [ -e ${HOME}/.vimrc ]
     then
        dialog --backtitle "Instalación vimrc de Straza" --title "Copia de seguridad" --yesno "El archivo .vimrc ya existe, ¿Desea hacer una copia de seguridad?" 7 70
        RESPUESTA=$?
@@ -32,16 +28,16 @@ if [ $VIM ] && [ $GIT ] && [ $DIALOG ]
        if [ $RESPUESTA = 0 ]
        then
             echo "Creando copia de seguridad."
-            cp /home/$USUARIO/.vimrc /home/$USUARIO/.vimrc.backup
+            cp ${HOME}/.vimrc ${HOME}/.vimrc.backup
        fi
     fi
 
     #Guardo dotfiles
-    cp ${DIRECTORIO}/vimrc /home/$USUARIO/.vimrc
+    cp ${DIRECTORIO}/vimrc ${HOME}/.vimrc
     #Cambio propietario
-    chown $USUARIO:$USUARIO /home/$USUARIO/.vimrc
+    chown ${USER}:${USER} ${HOME}/.vimrc
     #Cambio propiedades
-    chmod 644 /home/$USUARIO/.vimrc
+    chmod 644 ${HOME}/.vimrc
 
     #Ejecutar scritp remap
     chmod +x ${DIRECTORIO}/remap.sh
