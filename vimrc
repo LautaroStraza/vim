@@ -41,6 +41,8 @@ set wildmode=longest,list,full "Habilita el autocompletado de archivos.
 
 " Cambio leader key de \ a <espacio>.
 let mapleader =" "
+" Recargar configuracion
+map <leader>r :source ${HOME}/.vimrc<CR>
 
 " Copiar y pegar a xclipboard
 vnoremap <C-y> "*y :let @+=@*<CR>
@@ -51,10 +53,10 @@ map <C-p> "+P
 noremap % v%
 
 " Deshabilita las flechas dentro de <insert mode>.
-inoremap <Up>	    <Nop>
-inoremap <Down>     <Nop>
-inoremap <Left>     <Nop>
-inoremap <Right>    <Nop>
+map <Up>	    <Nop>
+map <Down>     <Nop>
+map <Left>     <Nop>
+map <Right>    <Nop>
 
 " Remapeo para buffers.
 map <leader>n :bnext<CR>
@@ -63,11 +65,24 @@ map <leader>d :bdelete<CR>
 map <leader>w :w<CR>
 map <leader>q :q<CR>
 
+" Remapeo para moverme entre ventanas.
+map <C-k> <C-w>k
+map <C-j> <C-w>j
+map <C-h> <C-w>h
+map <C-l> <C-w>l
+
 " Remapeo para plugins.
+map <leader>i :PluginInstall<CR>:bd<CR>
 map <leader>t :NERDTreeToggle<CR>
 map <leader>g :Goyo<CR>
 map <leader>h <Esc>:call ToggleHardMode()<CR>
-map <leader>c <Esc>:LLPStartPreview<CR>
+
+" Preview de Markdowns
+"Github Readme
+autocmd filetype markdown nnoremap <buffer> <leader>c :InstantMarkdownPreview<CR>
+"map <leader>c <Esc>:LLPStartPreview<CR>
+"Latex
+"map <leader>c <Esc>:LLPStartPreview<CR>
 
 " Remueve espacios en blanco extras
 " al final de cada linea al guardar
@@ -86,20 +101,24 @@ Plugin 'VundleVim/Vundle.vim'
 "-------------------------"
 " Agregar aca los Plugins "
 "-------------------------"
-Plugin 'PotatoesMaster/i3-vim-syntax'
+Plugin 'mboughaba/i3config.vim'
 Plugin 'ervandew/supertab'
 Plugin 'junegunn/goyo.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'vimwiki/vimwiki'
 Plugin 'agude/vim-eldar'
-Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'wikitopian/hardmode'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'suan/vim-instant-markdown', {'rtp': 'after'}
+Plugin 'tpope/vim-fugitive'
+Plugin 'xuhdev/vim-latex-live-preview'
 
 "---------------------------------"
-" Finalizar la entrada de plugins "
+" Finaliza la entrada de plugins "
 "---------------------------------"
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -107,16 +126,48 @@ filetype plugin indent on    " required
 "--------------------------------"
 " Configuraciones de los plugins "
 "--------------------------------"
-"Colorscheme
+"mboughaba/i3config.vim
+aug i3config_ft_detection
+  au!
+  au BufNewFile,BufRead ~/.config/i3/config set filetype=i3config
+aug end
+
+"scrooloose/nerdtree''scrooloose/nerdtree
+autocmd vimenter * NERDTree
+"close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"autocmd <C-w>l
+
+"vimwiki/vimwiki
+filetype plugin on
+
+"agude/vim-eldar
 if has('syntax')
     syntax enable             " Turn on syntax highlighting
-    silent! colorscheme eldar
+    silent! colorscheme eldar " Custom color scheme
 endif
-"Airline
+
+"vim-airline/vim-airline
 let g:airline#extensions#tabline#enabled = 1
+let g:powerline_pycmd = 'py3'
+"let g:airline_powerline_fonts = 1
+"vim-airline/vim-airline-themes
 let g:airline_theme='dark_minimal'
-"Vimwiki
-filetype plugin on
+
+"wikitopian/hardmode
+"Habilitar predeterminado
+"autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
+
+"plasticboy/vim-markdown
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
+
+"suan/vim-instant-markdown
+"let g:instant_markdown_slow = 1
+let g:instant_markdown_autostart = 0
+let g:instant_markdown_autoscroll = 1
+
+
 "Latex-live-preview
 let g:livepreview_previewer = 'evince'
 let g:livepreview_engine = 'pdflatex'
