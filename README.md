@@ -52,4 +52,4 @@ Cada vez que reinicia la máquina virtual se pierte el remapeo de teclas,
 ![alt text](https://raw.githubusercontent.com/lautarostraza/vimrc/master/im%C3%A1genes/screenshoot-2.png)
 ![alt text](https://raw.githubusercontent.com/lautarostraza/vimrc/master/im%C3%A1genes/screenshoot-3.png)
 
-Autor @lautarostraza
+Autor @lautarobarba
