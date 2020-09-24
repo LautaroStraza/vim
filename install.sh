@@ -33,14 +33,14 @@ if [ $VIM ] && [ $GIT ] && [ $DIALOG ]
     fi
 
     #Guardo dotfiles
-    cp ${DIRECTORIO}/vimrc ${HOME}/.vimrc
+    cp "${DIRECTORIO}/vimrc" ${HOME}/.vimrc
     #Cambio propietario
     chown ${USER}:${USER} ${HOME}/.vimrc
     #Cambio propiedades
     chmod 644 ${HOME}/.vimrc
 
     #Ejecutar scritp remap
-    chmod +x ${DIRECTORIO}/remap.sh
+    chmod +x "${DIRECTORIO}/remap.sh"
     ${DIRECTORIO}/remap.sh
 
     #Instalar scritp remap
@@ -50,7 +50,7 @@ if [ $VIM ] && [ $GIT ] && [ $DIALOG ]
     then
         if [ ! -e /usr/local/bin/remap ]
         then
-            sudo cp ${DIRECTORIO}/remap.sh /usr/local/bin/remap
+            sudo cp "${DIRECTORIO}/remap.sh" /usr/local/bin/remap
             echo "Remap instalado en /usr/local/bin/remap."
             echo "Para ejecutar:"
             echo "              $ remap"
@@ -71,6 +71,9 @@ if [ $VIM ] && [ $GIT ] && [ $DIALOG ]
         echo "Instalando plugins..."
         vim +PluginInstall +qall
     fi
+
+    #Instalar las configuraciones segun filetype
+    cp -r "${DIRECTORIO}/ftplugin" ${HOME}/.vim
 
     #Saludos
     dialog --backtitle "Instalación vimrc de Straza" --ok-label "Salir" --title "Saludos" --msgbox "La instalación finalizó corectamente, Dews!" 7 47

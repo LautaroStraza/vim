@@ -13,7 +13,6 @@
 "-------------"
 " Basic setup "
 "-------------"
-
 "Disable beeping.
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
@@ -36,7 +35,6 @@ set wildmode=longest,list,full "Habilita el autocompletado de archivos.
 "------------"
 " Re-mapping "
 "------------"
-
 " Deshabilita las flechas dentro de <insert mode>.
 nnoremap <Up>        <Nop>
 nnoremap <Down>      <Nop>
@@ -64,7 +62,6 @@ inoremap {;<CR> {<CR>};<ESC>O}}
 "-------"
 " Extra "
 "-------"
-
 " Remueve espacios en blanco extras
 " al final de cada linea al guardar
 "                     el documento.
@@ -74,7 +71,7 @@ autocmd BufWritePre * %s/\s\+$//e
 " Vundle Config "
 "---------------"
 set nocompatible              " be iMproved, required
-filetype off
+filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -82,15 +79,19 @@ Plugin 'VundleVim/Vundle.vim'
 "-------------------------"
 " Agregar aca los Plugins "
 "-------------------------"
-
-"---------------------------------"
+Plugin 'preservim/nerdcommenter'
+Plugin 'posva/vim-vue'
+"--------------------------------"
 " Finaliza la entrada de plugins "
-"---------------------------------"
+"--------------------------------"
 call vundle#end()            " required
-filetype plugin indent on    " required
+filetype plugin on           " required
 
 "--------------------------------"
 " Configuraciones de los plugins "
 "--------------------------------"
+"Plugin 'posva/vim-vue'
+let g:vue_disable_pre_processors=1
+
 
 " Dews!
