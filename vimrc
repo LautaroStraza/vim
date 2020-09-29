@@ -53,6 +53,7 @@ inoremap ' ''<left>
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
+inoremap < <><left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O}}
 
@@ -79,8 +80,13 @@ Plugin 'VundleVim/Vundle.vim'
 "-------------------------"
 " Agregar aca los Plugins "
 "-------------------------"
+Plugin 'mboughaba/i3config.vim'
 Plugin 'preservim/nerdcommenter'
 Plugin 'posva/vim-vue'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'wikitopian/hardmode'
+Plugin 'kien/ctrlp.vim'
+
 "--------------------------------"
 " Finaliza la entrada de plugins "
 "--------------------------------"
@@ -90,8 +96,11 @@ filetype plugin on           " required
 "--------------------------------"
 " Configuraciones de los plugins "
 "--------------------------------"
-"Plugin 'posva/vim-vue'
+
+"posva/vim-vue
 let g:vue_disable_pre_processors=1
 
+"kien/ctrlp.vim
+let g:ctrlp_working_path_mode = 'a'
 
 " Dews!
