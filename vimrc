@@ -48,14 +48,14 @@ map <C-h> <C-w>h
 map <C-l> <C-w>l
 
 " Cierre automático de llaves
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap < <><left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O}}
+"inoremap " ""<left>
+"inoremap ' ''<left>
+"inoremap ( ()<left>
+"inoremap [ []<left>
+"inoremap { {}<left>
+"inoremap < <><left>
+"inoremap {<CR> {<CR>}<ESC>O
+"inoremap {;<CR> {<CR>};<ESC>O}}
 
 " Mostrar/Ocultar numero de lineas
 "nnoremap <F3> :set nu! rnu!<CR>
@@ -83,7 +83,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'mboughaba/i3config.vim'
 Plugin 'preservim/nerdcommenter'
 Plugin 'posva/vim-vue'
-Plugin 'vim-syntastic/syntastic'
+"Plugin 'vim-syntastic/syntastic'
 Plugin 'wikitopian/hardmode'
 Plugin 'kien/ctrlp.vim'
 
