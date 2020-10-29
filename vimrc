@@ -86,6 +86,9 @@ Plugin 'posva/vim-vue'
 "Plugin 'vim-syntastic/syntastic'
 Plugin 'wikitopian/hardmode'
 Plugin 'kien/ctrlp.vim'
+Plugin 'preservim/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'tpope/vim-fugitive'
 
 "--------------------------------"
 " Finaliza la entrada de plugins "
@@ -102,5 +105,12 @@ let g:vue_disable_pre_processors=1
 
 "kien/ctrlp.vim
 let g:ctrlp_working_path_mode = 'a'
+
+"preservim/nerdcommenter
+map <C-c> <plug>NERDCommenterToggle
+
+"preservim/nerdtree
+map <C-n> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Dews!
